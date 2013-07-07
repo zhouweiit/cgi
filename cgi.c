@@ -4,6 +4,12 @@ static void init(){
     serverInit();    
 }
 
+static void test(){
+    char *pstr= "123";
+    punion p;
+    p.pchar = pstr;
+}
+
 int main (){
 
     //init();
@@ -11,6 +17,7 @@ int main (){
     while (FCGI_Accept() >= 0) {
         printf("Content-type: text/html\r\n""\r\n""<title>FastCGI</title>");
         init();
+        test();
     } /* while */
 
     return 0;

@@ -5,6 +5,10 @@
 #include "server.h"
 #endif
 
+#ifndef __tools_h
+#include "tools.h"
+#endif
+
 #ifndef __cgi_h
 #define __cgi_h
 #endif

@@ -2,7 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 #include <fcgi_stdio.h>
+
+#ifndef __tools_h
 #include "tools.h"
+#endif
 
 #ifndef __server_h
 #define __server_h
