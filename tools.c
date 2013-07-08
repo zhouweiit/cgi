@@ -29,7 +29,7 @@ char *urldecode(char *p){
     return pm;
 }
 
-char **explode(char *string,char explode){
+pstruct explode(char *string,char explode){
     int strlength = strlen(string);
     int markNum = 0;
     int i = 0;
@@ -38,7 +38,6 @@ char **explode(char *string,char explode){
             markNum++;
         }     
     }
-
     int ereryStrLen[markNum];
     int strlen = 0;
     markNum = 0;
@@ -54,7 +53,8 @@ char **explode(char *string,char explode){
         }
     }
     char **explodeStr = (char **) malloc((markNum) * sizeof(int));
-    char **pexplodeStr = explodeStr;
+    punion p;
+    p.ppchar = explodeStr;
     for (i = 0;i < markNum;i++){
         *explodeStr = (char *) malloc(ereryStrLen[i] + 1);
         char *ppexplodeStr = *explodeStr;
@@ -68,6 +68,6 @@ char **explode(char *string,char explode){
         explodeStr++;
         string++;
     }
-    explodeStr = pexplodeStr;
-    return explodeStr;
+    pstruct pStruct = {markNum,1,p}; 
+    return pStruct;
 }

@@ -5,9 +5,7 @@ static void init(){
 }
 
 static void test(){
-    char *pstr= "123";
-    punion p;
-    p.pchar = pstr;
+    pstruct scream = explode(SERVER.scream,'&');
 }
 
 int main (){

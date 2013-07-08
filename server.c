@@ -105,7 +105,4 @@ int serverInit(){
     serverPort();
     serverName();
     scream();
-    char **test = explode(SERVER.scream,'&');
-    printf("%s<br />",urldecode(*test));    
-    printf("%s",*(test+1));
 }

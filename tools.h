@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcgi_stdio.h>
 #include <string.h>
 
 #ifndef __tools_h
@@ -27,4 +28,4 @@ typedef struct{
 
 extern char *strupr(char *str);
 extern char *urldecode(char *p);
-extern char **explode(char *string,char explode);
+extern pstruct explode(char *string,char explode);
