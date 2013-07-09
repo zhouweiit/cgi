@@ -1,7 +1,7 @@
 #!/bin/bash
 gcccommand=/usr/bin/gcc
 cginame=cgi
-scriptname='cgi.c server.c tools.c'
+scriptname='cgi.c http/server.c util/tools.c'
 
 
 # all lib

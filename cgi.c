@@ -5,7 +5,6 @@ static void init(){
 }
 
 static void test(){
-    pstruct scream = explode(SERVER.scream,'&');
 }
 
 int main (){
