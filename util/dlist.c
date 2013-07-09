@@ -1,15 +1,15 @@
 #include "dlist.h"
 
 
-void dlistInit(dlist *dlist,int (*match)(const void*,const void*),(*destroy)(void *data)){
+void dlistInit(dlist *dlist,int (*match)(const void*,const void*),void (*destroy)(void *data)){
     dlist->size = 0;
     dlist->match = match;
-    dllis->destroy = destroy;
+    dlist->destroy = destroy;
     dlist->head = NULL;
     dlist->tail = NULL;
 }
 
-void dlistRemove(dlist *dlist,listelmt *element,void **data){
+int dlistRemove(dlist *dlist,dlistelmt *element,void *data){
     if (element == NULL || dlist->size == 0){
         return -1;
     }    
@@ -33,7 +33,7 @@ void dlistRemove(dlist *dlist,listelmt *element,void **data){
         element->next->prev = element->prev;
     }
     free(element);
-    list->size--;
+    dlist->size--;
     return 0;
 }
 
@@ -41,10 +41,10 @@ void dlistDestroy(dlist *dlist){
     
 }
 
-void dlistInsertNext(dlist *dlist,dlistelmt *element,const void *data){
+int dlistInsertNext(dlist *dlist,dlistelmt *element,const void *data){
     
 }
 
-void dlistInsertPrev(dlist *dlist,dlistemlt *element,const void *data){
+int dlistInsertPrev(dlist *dlist,dlistelmt *element,const void *data){
 
 }

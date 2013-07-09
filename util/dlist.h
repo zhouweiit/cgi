@@ -22,8 +22,8 @@ typedef struct dlist_{
     dlistelmt *tail;
 } dlist; 
 
-extern void dlistInit(dlist *dlist,int (*match)(const void*,const void*),(*destroy)(void *data));
+extern void dlistInit(dlist *dlist,int (*match)(const void*,const void*),void (*destroy)(void *data));
 extern void dlistDestroy(dlist *dlist);
-extern void dlistInsertNext(dlist *dlist,dlistelmt *element,const void *data);
-extern void dlistInsertPrev(dlist *dlist,dlistemlt *element,const void *data);
-extern void dlistRemove(dlist *dlist,listelmt *element,void *data);
+extern int dlistInsertNext(dlist *dlist,dlistelmt *element,const void *data);
+extern int dlistInsertPrev(dlist *dlist,dlistelmt *element,const void *data);
+extern int dlistRemove(dlist *dlist,dlistelmt *element,void *data);
