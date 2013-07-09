@@ -7,25 +7,29 @@
 #define __tools_h
 #endif
 
-typedef union{
+#define GC(P) free(p);p = NULL;
+
+typedef union punion{
+    char *pchar;
+    char **ppchar;
     int *pint;
     int **ppint;
     long *plong;
     long **pplong;
     float *pfloat;
-    float **ppfloat;
+    float **pploat;
     double *pdouble;
     double **ppdouble;
-    char *pchar;
-    char **ppchar;
 } punion;
 
-typedef struct{
+typedef struct pstruct{
     int length;
     int offset;
     punion point;
+    struct pstruct *pst;
 } pstruct;
 
 extern char *strupr(char *str);
 extern char *urldecode(char *p);
 extern pstruct explode(char *string,char explode);
+extern void GCPstruct(pstruct pst);

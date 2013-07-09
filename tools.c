@@ -68,6 +68,16 @@ pstruct explode(char *string,char explode){
         explodeStr++;
         string++;
     }
-    pstruct pStruct = {markNum,1,p}; 
+    pstruct pStruct = {markNum,1,p,NULL}; 
     return pStruct;
+}
+
+void GCPstruct(pstruct pst){
+    if (NULL != pst.pst){
+        GC(pst.pst);   
+    }
+    int i = pst.offset;
+    for (i;i >= 1;i--){
+        pst--;    
+    }
 }
