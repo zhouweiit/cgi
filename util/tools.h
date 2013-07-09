@@ -7,17 +7,12 @@
 #define __tools_h
 #endif
 
-typedef union punion_{
-    void *p;
-    void **pp;
-    void ***ppp;
-} punion;
-
 typedef struct pstruct_{
     int length;
     int offset;
-    punion point;
+    void *data;
     struct pstruct *pst;
+    void (*destroy)(void *);
 } pstruct;
 
 extern char *strupr(char *str);

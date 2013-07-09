@@ -39,7 +39,9 @@ pstruct explode(char *string,char explode){
         }     
     }
     if (markNum == 0){
-        pstruct pStruct = {1,1,string,NULL};    
+        char **str = (char **)malloc(sizeof(char **));
+        *str = string;
+        pstruct pStruct = {1,1,(void *)str,NULL};    
         return pStruct;
     }
     int ereryStrLen[markNum];
@@ -56,9 +58,8 @@ pstruct explode(char *string,char explode){
             continue;
         }
     }
-    char **explodeStr = (char **) malloc((markNum) * sizeof(int));
-    punion p;
-    p.pp = (void **)explodeStr;
+    char **explodeStr = (char **) malloc((markNum) * sizeof(char **));
+    pstruct pStruct = {markNum,1,(void *)explodeStr,NULL}; 
     for (i = 0;i < markNum;i++){
         *explodeStr = (char *) malloc(ereryStrLen[i] + 1);
         char *ppexplodeStr = *explodeStr;
@@ -72,6 +73,5 @@ pstruct explode(char *string,char explode){
         explodeStr++;
         string++;
     }
-    pstruct pStruct = {markNum,1,p,NULL}; 
     return pStruct;
 }
