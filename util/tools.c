@@ -39,7 +39,7 @@ pstruct explode(char *string,char explode){
         }     
     }
     if (markNum == 0){
-        char **str = (char **)malloc(sizeof(char **));
+        char **str = (char **)malloc(sizeof(char *));
         *str = string;
         pstruct pStruct = {1,1,(void *)str,NULL};    
         return pStruct;
@@ -58,7 +58,7 @@ pstruct explode(char *string,char explode){
             continue;
         }
     }
-    char **explodeStr = (char **) malloc((markNum) * sizeof(char **));
+    char **explodeStr = (char **) malloc((markNum) * sizeof(char *));
     pstruct pStruct = {markNum,1,(void *)explodeStr,NULL}; 
     for (i = 0;i < markNum;i++){
         *explodeStr = (char *) malloc(ereryStrLen[i] + 1);

@@ -9,11 +9,11 @@ void dlistInit(dlist *dlist,int (*match)(const void*,const void*),void (*destroy
     dlist->tail = NULL;
 }
 
-int dlistRemove(dlist *dlist,dlistelmt *element,void *data){
+int dlistRemove(dlist *dlist,dlistelmt *element,void **data){
     if (element == NULL || dlist->size == 0){
         return -1;
     }    
-    data = element->data;
+    *data = element->data;
     if (element == dlist->head){
         dlist->head = element->next;
         if (dlist->size == 1){
@@ -38,13 +38,53 @@ int dlistRemove(dlist *dlist,dlistelmt *element,void *data){
 }
 
 void dlistDestroy(dlist *dlist){
-    
+    void *data;
+    while(dlist->size > 0){
+        dlistRemove(dlist,dlist->head,(void **)&data);
+        dlist->destroy(data);
+    }
+    memset(dlist,0,sizeof(dlist));
+    return;
 }
 
-int dlistInsertNext(dlist *dlist,dlistelmt *element,const void *data){
-    
-}
-
-int dlistInsertPrev(dlist *dlist,dlistelmt *element,const void *data){
-
+int dlistInsert(dlist *dlist,dlistelmt *element,const void *data){
+    if (NULL == dlist){
+        return -1;
+    }    
+    dlistelmt *newelmt = (dlistelmt *)malloc(sizeof(dlistelmt));
+    if (NULL == newelmt){
+        return -1;
+    }
+    newelmt->data = (void *)data;
+    if (0 == dlist->size){
+        dlist->head = newelmt;
+        dlist->tail = newelmt;
+    } else if (1 == dlist->size){
+        if (NULL == element){
+            dlist->head = newelmt;
+            newelmt->next = dlist->tail;
+            dlist->tail->prev = newelmt;
+        } else {
+            dlist->head->next = newelmt;
+            newelmt->prev = dlist->head;
+            dlist->tail = newelmt;
+        }
+    } else {
+        if (NULL == element){
+            dlist->head->prev = newelmt;
+            newelmt->next = dlist->head;
+            dlist->head = newelmt; 
+        } else if (element == dlist->tail){
+            dlist->tail->next = newelmt;
+            newelmt->prev = dlist->tail;
+            dlist->tail = newelmt;
+        } else {
+            newelmt->prev = element;
+            newelmt->next = element->next;
+            element->next->prev = newelmt;
+            element->next = newelmt;
+        } 
+    }
+    dlist->size++;
+    return 0;
 }
