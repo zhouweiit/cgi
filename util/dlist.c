@@ -1,10 +1,11 @@
 #include "dlist.h"
 
-
-void dlistInit(dlist *dlist,int (*match)(const void*,const void*),void (*destroy)(void *data)){
+void dlistInit(dlist *dlist,int (*match)(const void*,const void*),
+                void (*destroy)(void *),void (*printf)(void *)){
     dlist->size = 0;
     dlist->match = match;
     dlist->destroy = destroy;
+    dlist->printf = printf;
     dlist->head = NULL;
     dlist->tail = NULL;
 }
@@ -44,6 +45,7 @@ void dlistDestroy(dlist *dlist){
         dlist->destroy(data);
     }
     memset(dlist,0,sizeof(dlist));
+    free(dlist);
     return;
 }
 
@@ -87,4 +89,20 @@ int dlistInsert(dlist *dlist,dlistelmt *element,const void *data){
     }
     dlist->size++;
     return 0;
+}
+
+void printDlist(dlist *dlist){
+    printf("-------dlist printf------\n");    
+    if (NULL == dlist || 0 == dlist->size){
+        printf("it's empty");    
+    }      
+    dlistelmt *element = dlist->head;
+    printf("size: %d\n",dlist->size);
+    int mark = 1;
+    do {
+        printf("element_%d: ",mark++);
+        dlist->printf(element->data);
+        printf("\n");
+    } while ((element = element->next) && NULL != element);
+    printf("-------------------------\n");    
 }
