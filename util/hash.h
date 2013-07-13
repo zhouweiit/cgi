@@ -13,7 +13,7 @@ typedef struct dlhash_{
     int (*match)(const void *,const void *);
     void (*destroy)(void *);
     int size;
-    dlist *dlist;
+    dlist *dlists;
 } dlhash;
 
 extern unsigned int hashStr(const void *key,int buckets);

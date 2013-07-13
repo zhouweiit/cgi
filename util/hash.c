@@ -22,15 +22,64 @@ int dlhashInit(dlhash *dlhash,int buckets,int (*match)(const void *,const void *
     dlhash->match = match;
     dlhash->hashkey = hashkey;
     dlhash->destroy = destroy;
-    dlhash->dlist = (dlist *)malloc(buckets*(sizeof(dlist)));
-    if (NULL == dlhash->dlist){
+    dlhash->dlists = (dlist *)malloc(buckets*(sizeof(dlist)));
+    if (NULL == dlhash->dlists){
         return -1;    
     }
     int i = 0;
     while (i < buckets){
-        dlistInit(&dlhash->dlist[i++],match,destroy,NULL);
+        dlistInit(&dlhash->dlists[i++],match,destroy,NULL);
     }
     return 0;
 }
+
+void dlhashDestroy(dlhash *dlhash){
+    if (NULL == dlhash){
+        return;    
+    }     
+    while (dlhash->buckets > 0){
+        dlistDestroy(&dlhash->dlists[dlhash->buckets]);
+        dlhash->buckets--;    
+    }
+    free(dlhash->dlists);
+    memset(dlhash,NULL,sizeof(dlhash));
+}
+
+int dlhashRemove(dlhash *dlhash,const void *key,void **data){
+    if (NULL == dlhash){
+        return -1;    
+    }
+    int bucket = dlhash->hashkey(key,dlhash->buckets);    
+    dlist *dlist = &dlhash->dlists[bucket];
+    dlistelmt element = dlist->head;
+    if (NULL == element || 0 == dlist->size){
+        return -1;    
+    }
+    do{
+        if (0 == element->match(key,element->data)){
+            if (0 == dlistRemove(dlist,element,data)){
+                dlhash->size--;
+                return 0;   
+            } else {
+                return -1;        
+            }           
+        }
+    } while (NULL != (element = element->next));
+    return -1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

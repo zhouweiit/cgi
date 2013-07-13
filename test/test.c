@@ -39,8 +39,12 @@ int dlistTest(){
     scanf("%s",f);
     dlistInsert(testdlist,testemlt,f);
     dlistPrint(testdlist);
-    d
+    void *data = NULL;
+    dlistRemove(testdlist,testemlt,&data);
+    dlistPrintfChar(data);
+    dlistPrint(testdlist);
 }
 
 int main(int argc,char **argv){
+    dlistTest();
 }
