@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 
 #ifndef __dlist_h
@@ -69,4 +70,12 @@ extern int dlistRemove(dlist *dlist,dlistelmt *element,void **data);
  * @return void
  * @author zhouwei 2013-7-11
  */
-extern void printDlist(dlist *dlist);
+extern void dlistPrint(dlist *dlist);
+
+/**
+ * @TODO 根据offset的获取链表中的信息，正数从前往后数，默认从1开始，负数从后往前数，默认-1开始
+ * @param offset 需要获取element的下标
+ * @return dlistelmt
+ * @author zhouwei 2013-7-13
+ */
+extern dlistelmt *dlistReturnElmt(dlist *dlist,int offset);

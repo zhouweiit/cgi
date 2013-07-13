@@ -91,7 +91,30 @@ int dlistInsert(dlist *dlist,dlistelmt *element,const void *data){
     return 0;
 }
 
-void printDlist(dlist *dlist){
+dlistelmt *dlistReturnElmt(dlist *dlist,int offset){
+    if (NULL == dlist || 0 == dlist->size || 0 == offset){
+        return NULL;    
+    }            
+    dlistelmt *element = NULL;
+    int mark = 1;
+    int offsetAbs = abs(offset);
+    if (offset > 0){
+        element = dlist->head;
+        while (mark != offsetAbs){
+            element = element->next;
+            mark++;
+        }
+    } else {
+        element = dlist->tail;
+        while (mark != offsetAbs){
+            element = element->prev;
+            mark++;
+        }
+    }
+    return element;
+}
+
+void dlistPrint(dlist *dlist){
     printf("-------dlist printf------\n");    
     if (NULL == dlist || 0 == dlist->size){
         printf("it's empty");    
