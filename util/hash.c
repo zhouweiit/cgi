@@ -1,6 +1,6 @@
 #include "hash.h"
 
-unsigned int hashStr(const void *key,int buckets){
+unsigned int hashStr(const char *key,int buckets){
     const char *ptr = (char *)key;
     unsigned int val = 0;
     while (*ptr != '\0'){
@@ -42,7 +42,7 @@ void dlhashDestroy(dlhash *dlhash){
         dlhash->buckets--;    
     }
     free(dlhash->dlists);
-    memset(dlhash,NULL,sizeof(dlhash));
+    memset(dlhash,0,sizeof(dlhash));
 }
 
 int dlhashRemove(dlhash *dlhash,const void *key,void **data){
@@ -51,12 +51,12 @@ int dlhashRemove(dlhash *dlhash,const void *key,void **data){
     }
     int bucket = dlhash->hashkey(key,dlhash->buckets);    
     dlist *dlist = &dlhash->dlists[bucket];
-    dlistelmt element = dlist->head;
+    dlistelmt *element = dlist->head;
     if (NULL == element || 0 == dlist->size){
         return -1;    
     }
     do{
-        if (0 == element->match(key,element->data)){
+        if (0 == dlhash->match(key,element->data)){
             if (0 == dlistRemove(dlist,element,data)){
                 dlhash->size--;
                 return 0;   
@@ -69,17 +69,34 @@ int dlhashRemove(dlhash *dlhash,const void *key,void **data){
 }
 
 
+int dlhashInsert(dlhash *dlhash,const void *data){
+    if (NULL == dlhash || NULL == data){
+        return -1;    
+    }
+    int bucket = dlhash->hashkey(data,dlhash->buckets);
+    dlist *dlist = &dlhash->dlists[bucket];
+    if (0 == dlistInsert(dlist,NULL,data)){
+        return 0;    
+    }
+    return -1;
+}
 
+void *dlhashLookup(const dlhash *dlhash,const void *data){
+    if (NULL == dlhash || NULL == data){
+        return NULL;    
+    }
+    int bucket = dlhash->hashkey(data,dlhash->buckets);    
+    dlist *dlist = &dlhash->dlists[bucket];
+    dlistelmt *element = dlist->head;
+    if (NULL == element || 0 == dlist->size){
+        return NULL;    
+    }
+    do{
+        if (0 == dlhash->match(data,element->data)){
+            return element->data;
+        }
+    } while (NULL != (element = element->next));
+    return NULL;
 
-
-
-
-
-
-
-
-
-
-
-
+}
 
