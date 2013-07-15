@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#ifndef __dlist_h
 #include "dlist.h"
+#endif
 
 #ifndef __hash_h
 #define __hash_h

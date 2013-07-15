@@ -1,6 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#ifndef __dlist_h
 #include "../util/dlist.h"
+#endif
+
+#ifndef __hash_h
+#include "../util/hash.h"
+#endif
+
+
+typedef struct charValue_{
+    char *key;
+    void *data;
+} charValue;
 
 void dlistPrintfChar(void *data){
     printf("%s",(char *)data);
@@ -45,5 +59,20 @@ int dlistTest(){
     dlistPrint(testdlist);
 }
 
+int match(void *key1,void *key2){
+    charValue *key11 = (charValue *)key1;
+    charValue *key22 = (charValue *)key2;
+    char *strKey1 = key11->key;
+    char *strKey2 = key22->key;
+    return strcmp(strKey1,strKey2);
+}
+
+void hashTest(){
+   dlhash *testdlhash = (dlhash *)malloc(sizeof(dlhash));    
+   int (*hashStr)(const void *,int) = hashStr;
+   dlhashInit(testdlhash,10,NULL,hashStr,NULL);
+}
+
 int main(int argc,char **argv){
+    hashTest();
 }
