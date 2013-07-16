@@ -14,7 +14,9 @@ int dlistRemove(dlist *dlist,dlistelmt *element,void **data){
     if (element == NULL || dlist->size == 0){
         return -1;
     }    
-    *data = element->data;
+    if (NULL != data){
+        *data = element->data;
+    }
     if (element == dlist->head){
         dlist->head = element->next;
         if (dlist->size == 1){

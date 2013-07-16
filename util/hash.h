@@ -2,12 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifndef __hash_h
+#define __hash_h
+#endif
+
 #ifndef __dlist_h
 #include "dlist.h"
 #endif
 
-#ifndef __hash_h
-#define __hash_h
+#ifndef __test_h
+#include "../test/test.h"
 #endif
 
 typedef struct dlhash_{
@@ -21,12 +25,12 @@ typedef struct dlhash_{
 
 /**
  * @TODO 字符串生成hashkey的函数
- * @param key 字符串
+ * @param data 字符串
  * @param buckets桶的个数
  * @return hashkey
  * @author zhouwei 2013-7-11
  */
-extern unsigned int hashStr(const char *key,int buckets);
+extern int hashStr(const void *data,int buckets);
 
 /**
  * @TODO 哈希函数初始化

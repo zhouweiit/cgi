@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "test.h"
 
 #ifndef __dlist_h
 #include "../util/dlist.h"
@@ -9,12 +10,6 @@
 #ifndef __hash_h
 #include "../util/hash.h"
 #endif
-
-
-typedef struct charValue_{
-    char *key;
-    void *data;
-} charValue;
 
 void dlistPrintfChar(void *data){
     printf("%s",(char *)data);
@@ -59,7 +54,7 @@ int dlistTest(){
     dlistPrint(testdlist);
 }
 
-int match(void *key1,void *key2){
+int match(const void *key1,const void *key2){
     charValue *key11 = (charValue *)key1;
     charValue *key22 = (charValue *)key2;
     char *strKey1 = key11->key;
@@ -69,8 +64,18 @@ int match(void *key1,void *key2){
 
 void hashTest(){
    dlhash *testdlhash = (dlhash *)malloc(sizeof(dlhash));    
-   int (*hashStr)(const void *,int) = hashStr;
-   dlhashInit(testdlhash,10,NULL,hashStr,NULL);
+   int (*hashStra)(const void *,int) = hashStr;
+   int (*matcha)(const void *,const void *) = match;
+   dlhashInit(testdlhash,10,matcha,hashStra,NULL);
+charValue *v1 = (charValue *)malloc(sizeof(v1));v1->key = (char *)malloc(sizeof(char));*(v1->key)='a';
+charValue *v2 = (charValue *)malloc(sizeof(v2));v2->key = (char *)malloc(sizeof(char));*(v2->key)='b';
+charValue *v3 = (charValue *)malloc(sizeof(v3));v3->key = (char *)malloc(sizeof(char));*(v3->key)='c';
+charValue *v4 = (charValue *)malloc(sizeof(v4));v4->key = (char *)malloc(sizeof(char));*(v4->key)='a';
+    int esult = dlhashInsert(testdlhash,v1);
+    int rsult = dlhashInsert(testdlhash,v2);
+    int reult = dlhashInsert(testdlhash,v3);
+    int reslt = dlhashInsert(testdlhash,v4);
+    printf("%d",testdlhash->size);
 }
 
 int main(int argc,char **argv){

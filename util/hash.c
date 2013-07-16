@@ -1,7 +1,8 @@
 #include "hash.h"
 
-unsigned int hashStr(const char *key,int buckets){
-    const char *ptr = (char *)key;
+int hashStr(const void *data,int buckets){
+    const charValue *str = (charValue *)data;
+    const char *ptr = (char *)str->key;
     unsigned int val = 0;
     while (*ptr != '\0'){
         unsigned int tmp;
@@ -75,8 +76,9 @@ int dlhashInsert(dlhash *dlhash,const void *data){
     }
     int bucket = dlhash->hashkey(data,dlhash->buckets);
     dlist *dlist = &dlhash->dlists[bucket];
+    dlhashRemove(dlhash,data,NULL);
     if (0 == dlistInsert(dlist,NULL,data)){
-        return 0;    
+        dlhash->size++;
     }
     return -1;
 }
@@ -97,6 +99,5 @@ void *dlhashLookup(const dlhash *dlhash,const void *data){
         }
     } while (NULL != (element = element->next));
     return NULL;
-
 }
 
