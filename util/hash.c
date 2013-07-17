@@ -17,19 +17,20 @@ int hashStr(const void *data,int buckets){
 }
 
 int dlhashInit(dlhash *dlhash,int buckets,int (*match)(const void *,const void *),
-                    int (*hashkey)(const void *,int), void (*destroy)(void *)){
+                int (*hashkey)(const void *,int), void (*destroy)(void *),void (*print)(void *)){
     dlhash->buckets = buckets;
     dlhash->size = 0;
     dlhash->match = match;
     dlhash->hashkey = hashkey;
     dlhash->destroy = destroy;
+    dlhash->print = print;
     dlhash->dlists = (dlist *)malloc(buckets*(sizeof(dlist)));
     if (NULL == dlhash->dlists){
         return -1;    
     }
     int i = 0;
     while (i < buckets){
-        dlistInit(&dlhash->dlists[i++],match,destroy,destroy);
+        dlistInit(&dlhash->dlists[i++],match,destroy,print);
     }
     return 0;
 }
@@ -67,7 +68,6 @@ int dlhashRemove(dlhash *dlhash,const void *key,void **data){
     return -1;
 }
 
-
 int dlhashInsert(dlhash *dlhash,const void *data){
     if (NULL == dlhash || NULL == data){
         return -1;    
@@ -99,3 +99,6 @@ void *dlhashLookup(const dlhash *dlhash,const void *data){
     return NULL;
 }
 
+void *dlhashPrint(const dlhash *dlhash){
+    
+}

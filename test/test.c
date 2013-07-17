@@ -68,7 +68,7 @@ void hashTest(){
    int (*hashStra)(const void *,int) = hashStr;
    int (*matcha)(const void *,const void *) = match;
    void (*destroya)(void *) = dlistdestroy;
-   dlhashInit(testdlhash,10,matcha,hashStra,destroya);
+   dlhashInit(testdlhash,10,matcha,hashStra,destroya,NULL);
 charValue *v1 = (charValue *)malloc(sizeof(v1));v1->key = (char *)malloc(sizeof(char));*(v1->key)='a';
 charValue *v2 = (charValue *)malloc(sizeof(v2));v2->key = (char *)malloc(sizeof(char));*(v2->key)='b';
 charValue *v3 = (charValue *)malloc(sizeof(v3));v3->key = (char *)malloc(sizeof(char));*(v3->key)='c';

@@ -1,11 +1,11 @@
 #include "dlist.h"
 
 void dlistInit(dlist *dlist,int (*match)(const void*,const void*),
-                void (*destroy)(void *),void (*printf)(void *)){
+                void (*destroy)(void *),void (*print)(void *)){
     dlist->size = 0;
     dlist->match = match;
     dlist->destroy = destroy;
-    dlist->printf = printf;
+    dlist->print = print;
     dlist->head = NULL;
     dlist->tail = NULL;
 }
@@ -115,7 +115,7 @@ dlistelmt *dlistReturnElmt(dlist *dlist,int offset){
     return element;
 }
 
-void dlistPrint(dlist *dlist){
+void dlistPrint(const dlist *dlist){
     printf("-------dlist printf------\n");    
     if (NULL == dlist || 0 == dlist->size){
         printf("it's empty");    
@@ -125,7 +125,7 @@ void dlistPrint(dlist *dlist){
     int mark = 1;
     do {
         printf("element_%d: ",mark++);
-        dlist->printf(element->data);
+        dlist->print(element->data);
         printf("\n");
     } while ((element = element->next) && NULL != element);
     printf("-------------------------\n");    

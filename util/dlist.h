@@ -19,7 +19,7 @@ typedef struct dlist_{
     int size;
     int (*match)(const void *,const void *);
     void (*destroy)(void *data);
-    void (*printf)(void *data);
+    void (*print)(void *data);
     dlistelmt *head;
     dlistelmt *tail;
 } dlist; 
@@ -70,7 +70,7 @@ extern int dlistRemove(dlist *dlist,dlistelmt *element,void **data);
  * @return void
  * @author zhouwei 2013-7-11
  */
-extern void dlistPrint(dlist *dlist);
+extern void dlistPrint(const dlist *dlist);
 
 /**
  * @TODO 根据offset的获取链表中的信息，正数从前往后数，默认从1开始，负数从后往前数，默认-1开始
