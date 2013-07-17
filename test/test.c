@@ -16,7 +16,7 @@ void dlistPrintfChar(void *data){
 }
 
 void dlistdestroy(void *data){
-    free(data);
+//        free(data);
 }
 
 int dlistTest(){
@@ -52,6 +52,7 @@ int dlistTest(){
     dlistRemove(testdlist,testemlt,&data);
     dlistPrintfChar(data);
     dlistPrint(testdlist);
+    dlistDestroy(testdlist);
 }
 
 int match(const void *key1,const void *key2){
@@ -66,7 +67,8 @@ void hashTest(){
    dlhash *testdlhash = (dlhash *)malloc(sizeof(dlhash));    
    int (*hashStra)(const void *,int) = hashStr;
    int (*matcha)(const void *,const void *) = match;
-   dlhashInit(testdlhash,10,matcha,hashStra,NULL);
+   void (*destroya)(void *) = dlistdestroy;
+   dlhashInit(testdlhash,10,matcha,hashStra,destroya);
 charValue *v1 = (charValue *)malloc(sizeof(v1));v1->key = (char *)malloc(sizeof(char));*(v1->key)='a';
 charValue *v2 = (charValue *)malloc(sizeof(v2));v2->key = (char *)malloc(sizeof(char));*(v2->key)='b';
 charValue *v3 = (charValue *)malloc(sizeof(v3));v3->key = (char *)malloc(sizeof(char));*(v3->key)='c';
@@ -76,8 +78,11 @@ charValue *v4 = (charValue *)malloc(sizeof(v4));v4->key = (char *)malloc(sizeof(
     int reult = dlhashInsert(testdlhash,v3);
     int reslt = dlhashInsert(testdlhash,v4);
     printf("%d",testdlhash->size);
+    dlhashLookup(testdlhash,v3);
+    dlhashDestroy(testdlhash);
 }
 
 int main(int argc,char **argv){
     hashTest();
+//    dlistTest();
 }

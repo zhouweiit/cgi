@@ -29,7 +29,7 @@ int dlhashInit(dlhash *dlhash,int buckets,int (*match)(const void *,const void *
     }
     int i = 0;
     while (i < buckets){
-        dlistInit(&dlhash->dlists[i++],match,destroy,NULL);
+        dlistInit(&dlhash->dlists[i++],match,destroy,destroy);
     }
     return 0;
 }
@@ -39,10 +39,8 @@ void dlhashDestroy(dlhash *dlhash){
         return;    
     }     
     while (dlhash->buckets > 0){
-        dlistDestroy(&dlhash->dlists[dlhash->buckets]);
-        dlhash->buckets--;    
+        dlistDestroy(&dlhash->dlists[--dlhash->buckets]);
     }
-    free(dlhash->dlists);
     memset(dlhash,0,sizeof(dlhash));
 }
 

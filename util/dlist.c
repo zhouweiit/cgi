@@ -47,7 +47,6 @@ void dlistDestroy(dlist *dlist){
         dlist->destroy(data);
     }
     memset(dlist,0,sizeof(dlist));
-    free(dlist);
     return;
 }
 
