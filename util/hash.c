@@ -99,6 +99,12 @@ void *dlhashLookup(const dlhash *dlhash,const void *data){
     return NULL;
 }
 
-void *dlhashPrint(const dlhash *dlhash){
-    
+void dlhashPrint(const dlhash *dlhash){
+    if (NULL == dlhash || 0 == dlhash->size){
+        printf("it's empty");    
+    }    
+    int mark = dlhash->buckets;
+    while(mark-- > 0){
+        dlistPrint(&dlhash->dlists[mark]);       
+    }
 }

@@ -116,17 +116,17 @@ dlistelmt *dlistReturnElmt(dlist *dlist,int offset){
 }
 
 void dlistPrint(const dlist *dlist){
-    printf("-------dlist printf------\n");    
+    printf("------------------------------\n\n");    
     if (NULL == dlist || 0 == dlist->size){
-        printf("it's empty");    
+        printf("it's empty\n");    
+        return;
     }      
     dlistelmt *element = dlist->head;
     printf("size: %d\n",dlist->size);
     int mark = 1;
     do {
-        printf("element_%d: ",mark++);
+        printf("%d: ",mark++);
         dlist->print(element->data);
         printf("\n");
     } while ((element = element->next) && NULL != element);
-    printf("-------------------------\n");    
 }

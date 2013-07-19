@@ -81,3 +81,10 @@ extern void *dlhashLookup(const dlhash *dlhash,const void *key);
  */
 extern int dlhashInsert(dlhash *dlhash,const void *data); 
 
+/**
+ * @TODO 打印当前的hash表
+ * @param dlhash 哈希表
+ * @return void
+ * @author zhouwei 2013-7-17
+ */
+extern void dlhashPrint(const dlhash *dlhash);
