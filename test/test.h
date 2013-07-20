@@ -2,16 +2,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef __test_h
-#define __test_h
+#ifndef __test_test_h
+#define __test_test_h
 #endif
 
-#ifndef __dlist_h
+#ifndef __util_dlist_h
 #include "../util/dlist.h"
 #endif
 
-#ifndef __hash_h
+#ifndef __util_hash_h
 #include "../util/hash.h"
+#endif
+
+#ifndef __util_tools_h
+#include "../util/tools.h"
 #endif
 
 typedef struct charValue_{

@@ -2,16 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef __hash_h
-#define __hash_h
+#ifndef __util_hash_h
+#define __util_hash_h
 #endif
 
-#ifndef __dlist_h
+#ifndef __util_dlist_h
 #include "dlist.h"
-#endif
-
-#ifndef __test_h
-#include "../test/test.h"
 #endif
 
 typedef struct dlhash_{

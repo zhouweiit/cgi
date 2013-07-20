@@ -29,7 +29,7 @@ char *urldecode(char *p){
     return pm;
 }
 
-pstruct explode(char *string,char explode){
+int explode(char *string,char explode,dlist *dlist){
     int strlength = strlen(string);
     int markNum = 0;
     int i = 0;
@@ -38,12 +38,7 @@ pstruct explode(char *string,char explode){
             markNum++;
         }     
     }
-    if (markNum == 0){
-        char **str = (char **)malloc(sizeof(char *));
-        *str = string;
-        pstruct pStruct = {1,1,(void *)str,NULL};    
-        return pStruct;
-    }
+
     int ereryStrLen[markNum];
     int strlen = 0;
     markNum = 0;
@@ -58,20 +53,17 @@ pstruct explode(char *string,char explode){
             continue;
         }
     }
-    char **explodeStr = (char **) malloc((markNum) * sizeof(char *));
-    pstruct pStruct = {markNum,1,(void *)explodeStr,NULL}; 
     for (i = 0;i < markNum;i++){
-        *explodeStr = (char *) malloc(ereryStrLen[i] + 1);
-        char *ppexplodeStr = *explodeStr;
+        char *explodeStr = (char *) malloc(ereryStrLen[i] + 1);
         for (strlen = 0;strlen < ereryStrLen[i];strlen++){
-            **explodeStr = *string;
-            (*explodeStr)++;
+            explodeStr[strlen] = *string;
             string++;
         }
-        **explodeStr = '\0';
-        *explodeStr = ppexplodeStr;
-        explodeStr++;
+        explodeStr[strlen + 1] = '\0';
         string++;
+        if (0 != dlistInsert(dlist,NULL,explodeStr)){
+            return -1;    
+        }
     }
-    return pStruct;
+    return 0;
 }

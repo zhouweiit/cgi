@@ -4,8 +4,8 @@
 #include <math.h>
 
 
-#ifndef __dlist_h
-#define __dlist_h
+#ifndef __util_dlist_h
+#define __util_dlist_h
 #endif
 
 

@@ -1,19 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "test.h"
 
-#ifndef __dlist_h
-#include "../util/dlist.h"
-#endif
-
-#ifndef __hash_h
-#include "../util/hash.h"
-#endif
-
 void dlistPrintfChar(void *data){
-    charValue *cv = (charValue *)data;
-    printf("%s",cv->key);
+    printf("%s",(char *)data);
 }
 
 void dlistdestroy(void *data){
@@ -75,10 +63,12 @@ charValue *v1 = (charValue *)malloc(sizeof(v1));v1->key = (char *)malloc(sizeof(
 charValue *v2 = (charValue *)malloc(sizeof(v2));v2->key = (char *)malloc(sizeof(char));*(v2->key)='b';
 charValue *v3 = (charValue *)malloc(sizeof(v3));v3->key = (char *)malloc(sizeof(char));*(v3->key)='c';
 charValue *v4 = (charValue *)malloc(sizeof(v4));v4->key = (char *)malloc(sizeof(char));*(v4->key)='f';
-    int esult = dlhashInsert(testdlhash,v1);
-    int rsult = dlhashInsert(testdlhash,v2);
-    int reult = dlhashInsert(testdlhash,v3);
-    int reslt = dlhashInsert(testdlhash,v4);
+charValue *v5 = (charValue *)malloc(sizeof(v5));v5->key = (char *)malloc(sizeof(char));*(v5->key)='v';
+    dlhashInsert(testdlhash,v1);
+    dlhashInsert(testdlhash,v2);
+    dlhashInsert(testdlhash,v3);
+    dlhashInsert(testdlhash,v4);
+    dlhashInsert(testdlhash,v5);
     printf("%d",testdlhash->size);
     charValue *v11=dlhashLookup(testdlhash,v4);
     printf("%s",v11->key);
@@ -87,6 +77,12 @@ charValue *v4 = (charValue *)malloc(sizeof(v4));v4->key = (char *)malloc(sizeof(
 }
 
 int main(int argc,char **argv){
-    hashTest();
-//    dlistTest();
+    char *a = "123&456&789";
+    dlist *testdlist = (dlist *)malloc(sizeof(dlist));
+    void *match = NULL;
+    void (*destroy)(void *) = dlistdestroy;
+    void (*printf)(void *) = dlistPrintfChar;
+    dlistInit(testdlist,match,destroy,printf);
+    explode(a,'&',testdlist);
+    dlistPrint(testdlist);
 }

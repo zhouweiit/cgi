@@ -1,8 +1,7 @@
 #include "hash.h"
 
 int hashStr(const void *data,int buckets){
-    const charValue *str = (charValue *)data;
-    const char *ptr = (char *)str->key;
+    const char *ptr = (char *)data; 
     unsigned int val = 0;
     while (*ptr != '\0'){
         unsigned int tmp;

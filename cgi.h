@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <fcgi_stdio.h>
 
-#ifndef __server_h
+#ifndef __http_server_h
 #include "http/server.h"
 #endif
 
-#ifndef __tools_h
+#ifndef __util_tools_h
 #include "util/tools.h"
 #endif
 

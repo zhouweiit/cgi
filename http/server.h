@@ -3,12 +3,16 @@
 #include <stdlib.h>
 #include <fcgi_stdio.h>
 
-#ifndef __tools_h
+#ifndef __http_server_h
+#define __http_server_h
+#endif
+
+#ifndef __util_tools_h
 #include "../util/tools.h"
 #endif
 
-#ifndef __server_h
-#define __server_h
+#ifndef __http_request_h
+#include "request.h"
 #endif
 
 #define getenv(name) (char *)getenv(name)
