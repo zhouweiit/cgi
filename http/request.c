@@ -101,4 +101,8 @@ void initRequestParams(){
 void destoryParams(){
     dlhashDestroy(requestParamsGET);    
     dlhashDestroy(requestParamsPOST);    
+    free(requestParamsGET);
+    free(requestParamsPOST);
+    requestParamsGET  = NULL;
+    requestParamsPOST = NULL;
 }

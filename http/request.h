@@ -23,10 +23,6 @@
 #include "server.h"
 #endif
 
-#ifndef __cgi_h
-#include "../cgi.h"
-#endif
-
 typedef struct httpData_{
     char *key;
     char *data;
