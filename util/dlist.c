@@ -1,7 +1,7 @@
 #include "dlist.h"
 
 void dlistInit(dlist *dlist,int (*match)(const void*,const void*),
-                void (*destroy)(void *),void (*print)(void *)){
+                void (*destroy)(void *),void (*print)(const void *)){
     dlist->size = 0;
     dlist->match = match;
     dlist->destroy = destroy;
@@ -116,7 +116,7 @@ dlistelmt *dlistReturnElmt(dlist *dlist,int offset){
 }
 
 void dlistPrint(const dlist *dlist){
-    printf("------------------------------\n\n");    
+    printf("\n------------------------------\n");    
     if (NULL == dlist || 0 == dlist->size){
         printf("it's empty\n");    
         return;

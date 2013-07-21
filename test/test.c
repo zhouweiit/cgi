@@ -1,6 +1,6 @@
 #include "test.h"
 
-void dlistPrintfChar(void *data){
+void dlistPrintfChar(const void *data){
     printf("%s",(char *)data);
 }
 
@@ -12,7 +12,7 @@ int dlistTest(){
     dlist *testdlist = (dlist *)malloc(sizeof(dlist));
     void *match = NULL;
     void (*destroy)(void *) = dlistdestroy;
-    void (*printf)(void *) = dlistPrintfChar;
+    void (*printf)(const void *) = dlistPrintfChar;
 
 
     dlistInit(testdlist,match,destroy,printf);
@@ -57,7 +57,7 @@ void hashTest(){
    int (*hashStra)(const void *,int) = hashStr;
    int (*matcha)(const void *,const void *) = match;
    void (*destroya)(void *) = dlistdestroy;
-   void (*printfa)(void *) = dlistPrintfChar;
+   void (*printfa)(const void *) = dlistPrintfChar;
    dlhashInit(testdlhash,10,matcha,hashStra,destroya,printfa);
 charValue *v1 = (charValue *)malloc(sizeof(v1));v1->key = (char *)malloc(sizeof(char));*(v1->key)='a';
 charValue *v2 = (charValue *)malloc(sizeof(v2));v2->key = (char *)malloc(sizeof(char));*(v2->key)='b';
@@ -77,12 +77,4 @@ charValue *v5 = (charValue *)malloc(sizeof(v5));v5->key = (char *)malloc(sizeof(
 }
 
 int main(int argc,char **argv){
-    char *a = "123&456&789";
-    dlist *testdlist = (dlist *)malloc(sizeof(dlist));
-    void *match = NULL;
-    void (*destroy)(void *) = dlistdestroy;
-    void (*printf)(void *) = dlistPrintfChar;
-    dlistInit(testdlist,match,destroy,printf);
-    explode(a,'&',testdlist);
-    dlistPrint(testdlist);
 }

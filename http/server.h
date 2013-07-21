@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+#ifdef _cgi_debug_
 #include <fcgi_stdio.h>
+#endif
 
 #ifndef __http_server_h
 #define __http_server_h
@@ -37,5 +40,5 @@ typedef struct{
     char *scream;
 } server;
 
-extern int serverInit();
+extern void serverInit();
 extern server SERVER;

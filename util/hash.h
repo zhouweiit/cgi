@@ -15,7 +15,7 @@ typedef struct dlhash_{
     int (*hashkey)(const void *,int);
     int (*match)(const void *,const void *);
     void (*destroy)(void *);
-    void (*print)(void *);
+    void (*print)(const void *);
     int size;
     dlist *dlists;
 } dlhash;
@@ -39,7 +39,7 @@ extern int hashStr(const void *data,int buckets);
  * @author zhouwei 2013-7-11
  */
 extern int dlhashInit(dlhash *dlhash,int buckets,int (*match)(const void *,const void *),
-                       int (*hashkey)(const void *,int), void (*destroy)(void *),void (*print)(void *));
+                       int (*hashkey)(const void *,int), void (*destroy)(void *),void (*print)(const void *));
 
 /**
  * @TODO 根据key移除一个元素

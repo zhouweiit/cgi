@@ -6,6 +6,10 @@
 #define __test_test_h
 #endif
 
+#ifndef __http_request_h
+#include "../http/request.h"
+#endif
+
 #ifndef __util_dlist_h
 #include "../util/dlist.h"
 #endif

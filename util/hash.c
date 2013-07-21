@@ -16,7 +16,7 @@ int hashStr(const void *data,int buckets){
 }
 
 int dlhashInit(dlhash *dlhash,int buckets,int (*match)(const void *,const void *),
-                int (*hashkey)(const void *,int), void (*destroy)(void *),void (*print)(void *)){
+                int (*hashkey)(const void *,int), void (*destroy)(void *),void (*print)(const void *)){
     dlhash->buckets = buckets;
     dlhash->size = 0;
     dlhash->match = match;
@@ -102,6 +102,7 @@ void dlhashPrint(const dlhash *dlhash){
     if (NULL == dlhash || 0 == dlhash->size){
         printf("it's empty");    
     }    
+    printf("dlhash-size: %d",dlhash->size);
     int mark = dlhash->buckets;
     while(mark-- > 0){
         dlistPrint(&dlhash->dlists[mark]);       

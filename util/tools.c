@@ -59,7 +59,7 @@ int explode(char *string,char explode,dlist *dlist){
             explodeStr[strlen] = *string;
             string++;
         }
-        explodeStr[strlen + 1] = '\0';
+        explodeStr[strlen] = '\0';
         string++;
         if (0 != dlistInsert(dlist,NULL,explodeStr)){
             return -1;    

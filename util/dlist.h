@@ -19,7 +19,7 @@ typedef struct dlist_{
     int size;
     int (*match)(const void *,const void *);
     void (*destroy)(void *data);
-    void (*print)(void *data);
+    void (*print)(const void *data);
     dlistelmt *head;
     dlistelmt *tail;
 } dlist; 
@@ -35,7 +35,7 @@ typedef struct dlist_{
  * @author zhouwei 2013-7-9
  */
 extern void dlistInit(dlist *dlist,int (*match)(const void*,const void*),
-                        void (*destroy)(void *data),void (*printf)(void *));
+                        void (*destroy)(void *data),void (*printf)(const void *));
 /**
  * @TODO 销毁一个双向链表，销毁其中每一个元素与链表本省
  * @param dlist 一个双向链表指针
