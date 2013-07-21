@@ -62,6 +62,8 @@ int dlistInsert(dlist *dlist,dlistelmt *element,const void *data){
     if (0 == dlist->size){
         dlist->head = newelmt;
         dlist->tail = newelmt;
+        newelmt->next = NULL;
+        newelmt->prev = NULL;
     } else if (1 == dlist->size){
         if (NULL == element){
             dlist->head = newelmt;

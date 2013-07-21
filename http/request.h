@@ -35,12 +35,12 @@ typedef struct httpData_{
 /**
  * 通过HTTPGET提交的参数
  */
-extern dlhash requestParamsGET;
+extern dlhash *requestParamsGET;
 
 /**
  * 通过HTTPPOST提交的参数
  */
-extern dlhash requestParamsPOST;
+extern dlhash *requestParamsPOST;
 
 /**
  * @TODO 根据httpData计算hash值
@@ -82,3 +82,10 @@ extern void printHttpData(const void *data);
  * @author zhouwei 2013-7-20
  */
 extern void initRequestParams();
+
+/**
+ * @TODO 销毁参数
+ * @return void
+ * @author zhouwei 2013-7-21
+ */
+extern void destoryParams();

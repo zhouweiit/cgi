@@ -1,7 +1,7 @@
 #include "request.h"
 
-dlhash requestParamsGET;
-dlhash requestParamsPOST;
+dlhash *requestParamsGET;
+dlhash *requestParamsPOST;
 
 int hashHttpData(const void *data,int buckets){
     httpData *dataTmp = (httpData *)data; 
@@ -25,6 +25,7 @@ void destroyHttpData(void *data){
     free(dataDestroy->data);
     dataDestroy->key = NULL;
     dataDestroy->data = NULL;
+    free(data);
 } 
 
 int matchHttpData(const void *httpData1,const void *httpData2){
@@ -78,7 +79,7 @@ static void initParamsHash(dlhash *paramsHash){
 
 static void initGetParams(){
     if (strlen(SERVER.queryString) > 0){
-        dlhash *requestParamsGET = (dlhash *)malloc(sizeof(dlhash));    
+        requestParamsGET = (dlhash *)malloc(sizeof(dlhash));    
         initParamsHash(requestParamsGET);
         initParams(SERVER.queryString,requestParamsGET);
     }
@@ -86,7 +87,7 @@ static void initGetParams(){
 
 static void initPostParams(){
     if (SERVER.contentLength > 0){
-        dlhash *requestParamsPOST = (dlhash *)malloc(sizeof(dlhash));    
+        requestParamsPOST = (dlhash *)malloc(sizeof(dlhash));    
         initParamsHash(requestParamsPOST);
         initParams(SERVER.scream,requestParamsPOST);
     }
@@ -95,4 +96,9 @@ static void initPostParams(){
 void initRequestParams(){
     initGetParams();
     initPostParams();
+}
+
+void destoryParams(){
+    dlhashDestroy(requestParamsGET);    
+    dlhashDestroy(requestParamsPOST);    
 }
