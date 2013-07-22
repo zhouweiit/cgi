@@ -9,12 +9,14 @@
 #include <fcgi_stdio.h>
 #endif
 
-char **httpHead;
-
 char *htmlDOCTYPE = "<!DOCTYPE html>";
 
 char *htmlMeta = "<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\">";
 
-char *title = "学生选课系统";
+char *title = "<title>学生选课系统</title>";
 
+char *head;
 
+char *body;
+
+extern void htmlPrint();
