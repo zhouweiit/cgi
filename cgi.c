@@ -16,7 +16,10 @@ static void run(){
             "Test-head-2:test\r\n"
             "\r\n"
             "");
-    printf("%s",html);
+    sqlite3 *db = NULL;
+    char *zErrMsg = 0;
+    int rc;
+    sqlite3_open("./db/student.db", &db);
 }
 
 int main (){

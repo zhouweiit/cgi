@@ -9,14 +9,12 @@
 #include <fcgi_stdio.h>
 #endif
 
-char *html = "\
-    <html>\
-        <head>\
-            <meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\">\
-            <title>用c编写基于fastcgi的cgi</title>\
-        </head>\
-        <body>\
-        </body>\
-    </html>";
+char **httpHead;
+
+char *htmlDOCTYPE = "<!DOCTYPE html>";
+
+char *htmlMeta = "<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\">";
+
+char *title = "学生选课系统";
 
 

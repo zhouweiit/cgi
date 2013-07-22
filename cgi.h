@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <sqlite3.h>
 
 //#define _cgi_debug_
 
@@ -17,5 +18,6 @@
 #ifndef __http_response_h
 #include "http/response.h"
 #endif
+
 
 

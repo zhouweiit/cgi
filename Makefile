@@ -7,9 +7,10 @@ utilScript='util/tools.c util/dlist.c util/hash.c'
 
 # all lib
 # fastcig
-lfcgi_url=/usr/lib/
+lfcgi_uri=/usr/lib/local/
+sqlite=/usr/lib/local/
 
-gcc -o $cginame $mainScript $httpScript $utilScript -L$lfcgi_url -lfcgi
+gcc -o $cginame $mainScript $httpScript $utilScript -L$lfcgi_uri -lfcgi -lsqlite3
 
 
 
