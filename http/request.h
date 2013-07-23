@@ -73,15 +73,14 @@ extern int matchHttpData(const void *data1,const void *data2);
 extern void printHttpData(const void *data);
 
 /**
- * @TODO 初始化请求参数
- * @return int 0成功 其他失败
+ * @TODO 初始化请求
  * @author zhouwei 2013-7-20
  */
-extern void initRequestParams();
+extern void initRequest();
 
 /**
- * @TODO 销毁参数
+ * @TODO 销毁请求 
  * @return void
  * @author zhouwei 2013-7-21
  */
-extern void destoryParams();
+extern void destroyRequest();

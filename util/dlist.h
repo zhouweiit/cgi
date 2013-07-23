@@ -8,6 +8,7 @@
 #define __util_dlist_h
 #endif
 
+#define _dlistDestroy(list) dlistDestroy(list);free(list);list = NULL;
 
 typedef struct dlistelmt_{
    void *data;

@@ -93,16 +93,24 @@ static void initPostParams(){
     }
 }
 
-void initRequestParams(){
+static void initRequestParams(){
     initGetParams();
     initPostParams();
 }
 
-void destoryParams(){
+static void destroyParams(){
     dlhashDestroy(requestParamsGET);    
     dlhashDestroy(requestParamsPOST);    
     free(requestParamsGET);
     free(requestParamsPOST);
     requestParamsGET  = NULL;
     requestParamsPOST = NULL;
+}
+
+void initRequest(){
+    initRequestParams();    
+}
+
+void destroyRequest(){
+    destroyParams();
 }

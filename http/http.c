@@ -1,12 +1,14 @@
 #include "http.h"
 
 void httpInit(){
-    serverInit();
-    initRequestParams();
+    initServer();
+    initRequest();
+    initResponse();
 }
 
 void httpDestroy(){
-    destoryParams();        
+    destroyRequest();
+    destroyResponse();
 }
 
 char *getParamsGET(char *key){

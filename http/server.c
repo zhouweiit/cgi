@@ -91,7 +91,7 @@ static void scream(){
     }
 }
 
-void serverInit(){ 
+void initServer(){ 
     contentLength();
     requestMethod();
     queryString();
@@ -106,3 +106,5 @@ void serverInit(){
     serverName();
     scream();
 }
+
+
