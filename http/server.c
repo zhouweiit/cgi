@@ -75,6 +75,10 @@ static void serverName(){
     SERVER.serverName = getenv("SERVER_NAME");
 }
 
+static void documentUri(){
+    SERVER.documentUri = getenv("DOCUMENT_URI");    
+}
+
 static void scream(){
     if (SERVER.contentLength > 0){
         char *scream = (char *)calloc(SERVER.contentLength,sizeof(char));
@@ -105,6 +109,10 @@ void initServer(){
     serverPort();
     serverName();
     scream();
+    documentUri();
 }
 
-
+void destroyServer(){
+    free(SERVER.scream);
+    SERVER.scream = NULL;
+}

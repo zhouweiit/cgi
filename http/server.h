@@ -42,3 +42,4 @@ typedef struct{
 
 extern void serverInit();
 extern server SERVER;
+void destroyServer();

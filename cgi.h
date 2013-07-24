@@ -20,4 +20,4 @@
 #endif
 
 
-
+#define _free(point) free(point); point = NULL;

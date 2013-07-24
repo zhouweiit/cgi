@@ -1,12 +1,15 @@
 #include "cgi.h"
 
-
 static void cgiInit(){
     httpInit();
 }
 
 static void destory(){
     httpDestroy(); 
+}
+
+static int scriptUriCheck(){
+    return countChar(SERVER.scriptName,'/'); 
 }
 
 static void run(){
@@ -21,7 +24,13 @@ static void run(){
 int main (){
     while (FCGI_Accept() >= 0) {
         cgiInit();
+        
         run();
+        printf("%s<br />",SERVER.scriptName);
+        printf("%s<br />",SERVER.documentUri);
+        printf("%s<br />",SERVER.scriptFileName);
+        printf("%s<br />",SERVER.queryString);
+        printf("%s<br />",SERVER.requestUri);
         destory();
     }
     return 0;

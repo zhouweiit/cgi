@@ -16,6 +16,10 @@
 #include "../util/hash.h"
 #endif
 
+#ifndef __http_route_h
+#include "route.h"
+#endif
+
 /**
  * @TODO http_init
  * @return void

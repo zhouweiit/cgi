@@ -67,3 +67,13 @@ int explode(char *string,char explode,dlist *dlist){
     }
     return 0;
 }
+
+int countChar(const char *string,char c){
+    int i = 0,count = 0;
+    while(string[i] != '\0'){
+        if (string[i++] == c){
+            count++;    
+        }
+    }    
+    return count;
+}

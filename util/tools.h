@@ -44,3 +44,12 @@ extern char *urldecode(char *p);
  * @author zhouwei 2013-7-20
  */
 int explode(char *string,char explode,dlist *dlist);
+
+/**
+ * @TODO 查找字符出现的次数
+ * @param string 需被查找的字符串
+ * @param c 需要查找的字符
+ * @return int 出现的次数
+ * @author zhouwei 2013-7-24
+ */
+int countChar(const char *string,char c);

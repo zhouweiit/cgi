@@ -28,8 +28,10 @@ static void sendBody(){
 }
 
 void sendHtml(){
+    printf("<html>");
     sendHead();
     sendBody();
+    printf("</html>");
 }
 
 void destroyResponse(){
