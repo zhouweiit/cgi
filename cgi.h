@@ -19,5 +19,9 @@
 #include "http/response.h"
 #endif
 
+#ifndef __http_route_h
+#include "http/route.h"
+#endif
+
 
 #define _free(point) free(point); point = NULL;

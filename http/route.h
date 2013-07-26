@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <fcgi_stdio.h>
 
 #ifndef __http_route_h
 #define __http_route_h
@@ -12,9 +13,13 @@
 #include "../admin/test.h"
 #endif
 
+#ifndef __http_server_h
+#include "server.h"
+#endif
+
 typedef struct actionData_{
     char *key;
-    char *actionFunction;
+    void (*actionFunction)();
 } actionData;
 
 extern dlhash *action;

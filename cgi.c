@@ -19,6 +19,7 @@ static void run(){
             "Test-head-2:test\r\n"
             "\r\n"
             "");
+    route(SERVER.scriptName);
 }
 
 int main (){
@@ -26,12 +27,12 @@ int main (){
         cgiInit();
         
         run();
-        printf("%s<br />",SERVER.scriptName);
-        printf("%s<br />",SERVER.documentUri);
-        printf("%s<br />",SERVER.scriptFileName);
-        printf("%s<br />",SERVER.queryString);
-        printf("%s<br />",SERVER.requestUri);
-        destory();
+       // printf("%s<br />",SERVER.scriptName);
+       // printf("%s<br />",SERVER.documentUri);
+       // printf("%s<br />",SERVER.scriptFileName);
+       // printf("%s<br />",SERVER.queryString);
+       // printf("%s<br />",SERVER.requestUri);
+       // destory();
     }
     return 0;
 }

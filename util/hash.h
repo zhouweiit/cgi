@@ -10,6 +10,11 @@
 #include "dlist.h"
 #endif
 
+#ifndef __cgi_h
+#include "../cgi.h"
+#endif
+
+
 typedef struct dlhash_{
     int buckets;
     int (*hashkey)(const void *,int);
@@ -84,3 +89,4 @@ extern int dlhashInsert(dlhash *dlhash,const void *data);
  * @author zhouwei 2013-7-17
  */
 extern void dlhashPrint(const dlhash *dlhash);
+

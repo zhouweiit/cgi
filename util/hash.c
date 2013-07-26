@@ -82,12 +82,14 @@ int dlhashInsert(dlhash *dlhash,const void *data){
 
 void *dlhashLookup(const dlhash *dlhash,const void *data){
     if (NULL == dlhash || NULL == data){
+        printf("1");
         return NULL;    
     }
     int bucket = dlhash->hashkey(data,dlhash->buckets);    
     dlist *dlist = &dlhash->dlists[bucket];
     dlistelmt *element = dlist->head;
     if (NULL == element || 0 == dlist->size){
+        printf("2");
         return NULL;    
     }
     do{
