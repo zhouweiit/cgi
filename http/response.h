@@ -3,19 +3,11 @@
 
 #ifndef __http_response_h
 #define __http_response_h
-#endif
-
-#ifndef _cgi_debug_
-#include <fcgi_stdio.h>
-#endif
-
-#ifndef __util_dlist_h
 #include "../util/dlist.h"
-#endif
 
-dlist *head;
+extern dlist *head;
 
-dlist *body;
+extern dlist *body;
 
 /**
  * @TODO 输出HTML
@@ -51,3 +43,4 @@ extern void appendBody(char *body);
  * @author zhouwei 2013-7-22
  */
 extern void initResponse();
+#endif

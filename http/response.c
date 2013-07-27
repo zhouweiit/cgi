@@ -1,5 +1,9 @@
 #include "response.h"
 
+dlist *head;
+
+dlist *body;
+
 static void destroyHtml(void *html){
     free(html);
     html = NULL;

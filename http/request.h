@@ -5,23 +5,12 @@
 
 #ifndef __http_request_h
 #define __http_request_h
-#endif
 
-#ifndef __util_dlist_h
 #include "../util/dlist.h"
-#endif
-
-#ifndef __util_hash_h
 #include "../util/hash.h"
-#endif
-
-#ifndef __util_tools_h
 #include "../util/tools.h"
-#endif
-
-#ifndef __http_server_h
 #include "server.h"
-#endif
+
 
 typedef struct httpData_{
     char *key;
@@ -84,3 +73,4 @@ extern void initRequest();
  * @author zhouwei 2013-7-21
  */
 extern void destroyRequest();
+#endif

@@ -6,7 +6,6 @@
 
 #ifndef __util_dlist_h
 #define __util_dlist_h
-#endif
 
 #define _dlistDestroy(list) dlistDestroy(list);free(list);list = NULL;
 
@@ -80,3 +79,4 @@ extern void dlistPrint(const dlist *dlist);
  * @author zhouwei 2013-7-13
  */
 extern dlistelmt *dlistReturnElmt(dlist *dlist,int offset);
+#endif

@@ -2,23 +2,11 @@
 
 #ifndef __http_http_h
 #define __http_http_h
-#endif
 
-#ifndef __http_server_h
-#include "server.h"
-#endif
-
-#ifndef __http_request_h
-#include "request.h"
-#endif
-
-#ifndef __util_hash_h
 #include "../util/hash.h"
-#endif
-
-#ifndef __http_route_h
+#include "server.h"
+#include "request.h"
 #include "route.h"
-#endif
 
 /**
  * @TODO http_init
@@ -47,3 +35,4 @@ extern char *getParamsPOST(char *key);
  * @author zhouwei 2013-7-21
  */
 extern void httpDestroy();
+#endif

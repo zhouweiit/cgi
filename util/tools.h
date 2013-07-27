@@ -3,13 +3,11 @@
 #include <string.h>
 #include <time.h>
 
+
 #ifndef __util_tools_h
 #define __util_tools_h
-#endif
 
-#ifndef __util_dlist_h
 #include "dlist.h"
-#endif
 
 typedef struct pstruct_{
     int length;
@@ -53,3 +51,4 @@ int explode(char *string,char explode,dlist *dlist);
  * @author zhouwei 2013-7-24
  */
 int countChar(const char *string,char c);
+#endif

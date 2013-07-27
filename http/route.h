@@ -3,19 +3,11 @@
 
 #ifndef __http_route_h
 #define __http_route_h
-#endif
 
-#ifndef __util_hash_h
 #include "../util/hash.h"
-#endif
-
-#ifndef __admin_test_h
 #include "../admin/test.h"
-#endif
-
-#ifndef __http_server_h
 #include "server.h"
-#endif
+
 
 typedef struct actionData_{
     char *key;
@@ -38,3 +30,4 @@ extern void route(char *scriptName);
  * @author zhouwei 2013-7-24
  */
 extern void initRoute();
+#endif
