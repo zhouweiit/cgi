@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-
+#include "../basic.h"
 
 #ifndef __util_tools_h
 #define __util_tools_h

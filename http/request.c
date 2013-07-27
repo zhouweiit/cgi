@@ -78,18 +78,18 @@ static void initParamsHash(dlhash *paramsHash){
 }
 
 static void initGetParams(){
-    if (strlen(SERVER.queryString) > 0){
+    if (strlen(SERVER->queryString) > 0){
         requestParamsGET = (dlhash *)malloc(sizeof(dlhash));    
         initParamsHash(requestParamsGET);
-        initParams(SERVER.queryString,requestParamsGET);
+        initParams(SERVER->queryString,requestParamsGET);
     }
 }
 
 static void initPostParams(){
-    if (SERVER.contentLength > 0){
+    if (SERVER->contentLength > 0){
         requestParamsPOST = (dlhash *)malloc(sizeof(dlhash));    
         initParamsHash(requestParamsPOST);
-        initParams(SERVER.scream,requestParamsPOST);
+        initParams(SERVER->scream,requestParamsPOST);
     }
 }
 

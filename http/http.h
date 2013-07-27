@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "../basic.h"
 
 #ifndef __http_http_h
 #define __http_http_h

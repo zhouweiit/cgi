@@ -1,11 +1,11 @@
-#include <stdio.h>
-#include <fcgi_stdio.h>
+#include "../basic.h"
 
 #ifndef __http_route_h
 #define __http_route_h
 
 #include "../util/hash.h"
 #include "../admin/test.h"
+#include "response.h"
 #include "server.h"
 
 

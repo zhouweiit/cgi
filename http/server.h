@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "../basic.h"
+
 
 #ifndef __http_server_h
 #define __http_server_h
@@ -11,7 +10,7 @@
 #define getenv(name) (char *)getenv(name)
 
 typedef enum {GET,POST,PUT,DELETE} method;
-typedef struct{
+typedef struct server_{
     int contentLength;
     char *queryString;    
     method requestMethod;
@@ -30,7 +29,9 @@ typedef struct{
     char *scream;
 } server;
 
+extern server *SERVER;
+
 extern void serverInit();
-extern server SERVER;
+
 void destroyServer();
 #endif

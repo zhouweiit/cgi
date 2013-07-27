@@ -1,9 +1,10 @@
-#include <stdio.h>
-#include <string.h>
+#include "../basic.h"
 
 #ifndef __http_response_h
 #define __http_response_h
 #include "../util/dlist.h"
+
+extern dlist *httpHead;
 
 extern dlist *head;
 
@@ -22,6 +23,13 @@ extern void sendHtml();
  * @author zhouwei 2013-7-22
  */
 extern void destroyResponse();
+
+/**
+ * @TODO 添加http的头信息
+ * @return void
+ * @author zhouwei 2013-7-27
+ */
+extern void appentHttpHead(char *httpHead);
 
 /**
  * @TODO 添加头html

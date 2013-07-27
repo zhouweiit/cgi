@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <fcgi_stdio.h>
+#include "../basic.h"
 
 #ifndef __http_request_h
 #define __http_request_h

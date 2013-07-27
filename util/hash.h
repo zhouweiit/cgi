@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "../basic.h"
 
 #ifndef __util_hash_h
 #define __util_hash_h

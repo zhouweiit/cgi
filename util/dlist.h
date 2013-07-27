@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-
+#include "../basic.h"
 
 #ifndef __util_dlist_h
 #define __util_dlist_h

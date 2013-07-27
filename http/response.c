@@ -1,5 +1,7 @@
 #include "response.h"
 
+dlist *httpHead;
+
 dlist *head;
 
 dlist *body;
@@ -7,6 +9,16 @@ dlist *body;
 static void destroyHtml(void *html){
     free(html);
     html = NULL;
+}
+
+static void sendHttpHead(){
+    if (httpHead->size > 0){
+        dlistelmt *headelmt = httpHead->tail;    
+        do{
+            printf("%s\r\n",(char *)headelmt->data); 
+        } while ((headelmt = headelmt->prev) != NULL);
+    }
+    printf("\r\n");
 }
 
 static void sendHead(){
@@ -32,6 +44,7 @@ static void sendBody(){
 }
 
 void sendHtml(){
+    sendHttpHead();
     printf("<html>");
     sendHead();
     sendBody();
@@ -39,8 +52,15 @@ void sendHtml(){
 }
 
 void destroyResponse(){
+    _dlistDestroy(httpHead);
     _dlistDestroy(head);
     _dlistDestroy(body);
+}
+
+void appendHttpHead(char *HttpHeadTmp){
+    char *HttpHeadAdd = (char *)malloc((strlen(HttpHeadTmp) + 1)* sizeof(char));
+    strcpy(HttpHeadAdd,HttpHeadTmp);
+    dlistInsert(httpHead,NULL,HttpHeadAdd);
 }
 
 void appendHead(char *headTmp){
@@ -57,8 +77,10 @@ void appendBody(char *bodyTmp){
 
 void initResponse(){
     void (*destroy)(void *) = destroyHtml;
+    httpHead = (dlist *)malloc(sizeof(dlist));
     head = (dlist *)malloc(sizeof(dlist));
     body = (dlist *)malloc(sizeof(dlist));
+    dlistInit(httpHead,NULL,destroy,NULL);
     dlistInit(head,NULL,destroy,NULL);
     dlistInit(body,NULL,destroy,NULL);
 }
