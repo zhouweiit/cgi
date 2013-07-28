@@ -41,7 +41,7 @@ int selectSqlite3(sqlite3 *db,char *sql,dlist **list){
     }
 }
 
-int insertSqlite3(sqlite3 *db,char *sql,int *lastId){
+int insertSqlite3(sqlite3 *db,char *sql){
     char *errMsg = NULL;
     int result = sqlite3_exec(db,sql,NULL,NULL,&errMsg);    
     sqlite3_free(errMsg);
