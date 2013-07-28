@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <sqlite3.h>
-#include <fcgi_stdio.h>
 #include "basic.h"
 
 #ifndef __cgi_h

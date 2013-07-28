@@ -45,7 +45,7 @@ static void sendBody(){
 
 void sendHtml(){
     sendHttpHead();
-    printf("<html>");
+    printf("<html>\n");
     sendHead();
     sendBody();
     printf("</html>");

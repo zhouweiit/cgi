@@ -7,11 +7,10 @@ group=www
 cgi=/data0/www/cgi/cgi
 child_num=2
 pid=/var/run/cgiserver.pid
-
 case "$1" in 
     start)
         echo "Starting cgiserver"
-        $fcgi -a $ip -p $port -u $user -g $group -f $cgi -F $child_num -P $pid
+        $fcgi -a $ip -p $port -u $user -g $group -f $cgi -F $child_num -P $pid 
         if [ $? != 0 ];then
             echo "faild"
         fi

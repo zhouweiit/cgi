@@ -1,0 +1,26 @@
+create table article (
+    id integer primary key autoincrement,    
+    title varchar(100),
+    content text,
+    author varchar(100),
+    creation_date datetime,
+    last_changed_date datetime
+);
+
+create table message(
+    id integer primary key autoincrement,
+    article_id integer,
+    author varchar(100),
+    content varchar(2000),
+    creation_date datetime,
+    last_changed_date datetime
+);
+
+create index title on article(title);
+create index author on article(author);
+create index article_id on message (article_id);
+create index author on message(author);
+
+insert into article (title,content,author,creation_date,last_changed_date) values (
+'测试','测试内容',':-)','2013-07-28 18:00:00','2013-07-28 18:00:00'
+)
