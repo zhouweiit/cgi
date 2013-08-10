@@ -35,6 +35,7 @@ int dlistRemove(dlist *dlist,dlistelmt *element,void **data){
         element->prev->next = element->next;
         element->next->prev = element->prev;
     }
+    memset(element,0,sizeof(element));
     free(element);
     dlist->size--;
     return 0;
@@ -59,11 +60,11 @@ int dlistInsert(dlist *dlist,dlistelmt *element,const void *data){
         return -1;
     }
     newelmt->data = (void *)data;
+    newelmt->next = NULL;
+    newelmt->prev = NULL;
     if (0 == dlist->size){
         dlist->head = newelmt;
         dlist->tail = newelmt;
-        newelmt->next = NULL;
-        newelmt->prev = NULL;
     } else if (1 == dlist->size){
         if (NULL == element){
             dlist->head = newelmt;

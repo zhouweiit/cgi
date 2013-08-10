@@ -11,6 +11,11 @@ static void destroyHtml(void *html){
     html = NULL;
 }
 
+static void printHttpData(const void *data){
+    char *dataTmp= (char *)data;
+    printf("data:%s",dataTmp);
+}
+
 static void sendHttpHead(){
     if (httpHead->size > 0){
         dlistelmt *headelmt = httpHead->tail;    
@@ -80,7 +85,7 @@ void initResponse(){
     httpHead = (dlist *)malloc(sizeof(dlist));
     head = (dlist *)malloc(sizeof(dlist));
     body = (dlist *)malloc(sizeof(dlist));
-    dlistInit(httpHead,NULL,destroy,NULL);
-    dlistInit(head,NULL,destroy,NULL);
-    dlistInit(body,NULL,destroy,NULL);
+    dlistInit(httpHead,NULL,destroy,printHttpData);
+    dlistInit(head,NULL,destroy,printHttpData);
+    dlistInit(body,NULL,destroy,printHttpData);
 }

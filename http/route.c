@@ -70,7 +70,7 @@ void route(char *scriptName){
     actionData *actionFun = (actionData *)dlhashLookup(action,&data);
     if (NULL == actionFun){
         appendHttpHead("Status: 302 OK");
-        appendHttpHead("Location: http://127.0.0.1:8001/404.html");
+        appendHttpHead("Location: /404.html");
     } else {
         actionFun->actionFunction();
     }
