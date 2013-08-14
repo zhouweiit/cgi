@@ -56,8 +56,8 @@ static void actionInsert(char *actionKey,void (*actionFunction)()){
 }
 
 static void loadAction(){
-    void (*adminTestHelloAction)() = adminTestHello;
-    actionInsert("/adminTestHello.c",adminTestHelloAction);
+    actionInsert("/adminTestHello.c",adminTestHello);
+    actionInsert("/defaultMainHtml.c",defaultMainHtml);
 }
 
 void initRoute(){

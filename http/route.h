@@ -5,6 +5,7 @@
 
 #include "../util/hash.h"
 #include "../admin/test.h"
+#include "../default/main.h"
 #include "response.h"
 #include "server.h"
 

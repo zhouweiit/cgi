@@ -1,4 +1,17 @@
 #include "db.h"
+
+static void printfDBInfo(const void *data){
+    dbinfo *info = (dbinfo *)data;
+    int i = 0;
+    for(i; i < info->length; i++){
+        printf("%s\t",info->key[i]);
+    }
+    
+    for(i = 0; i < info->length; i++){
+        printf("%s\t",info->value[i]); 
+    }
+}
+
 static void destroyDBinfo(void *data){
     dbinfo *info = (dbinfo *)data;
     int i = 0;
@@ -31,7 +44,7 @@ static int selectCallback(void *data,int count,char **values,char **names){
 int selectSqlite3(sqlite3 *db,char *sql,dlist **list){
     char *errMsg = NULL;
     *list = (dlist *)malloc(sizeof(dlist));
-    dlistInit(*list,NULL,destroyDBinfo,NULL);
+    dlistInit(*list,NULL,destroyDBinfo,printfDBInfo);
     int result = sqlite3_exec(db,sql,selectCallback,*list,&errMsg);    
     sqlite3_free(errMsg);
     if (result == SQLITE_OK){
