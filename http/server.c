@@ -81,8 +81,8 @@ static void documentUri(){
 
 static void scream(){
     if (SERVER->contentLength > 0){
-        char *scream = (char *)calloc(SERVER->contentLength,sizeof(char));
-        int ch,i = 0;
+        char *scream = (char *)malloc((SERVER->contentLength + 1) * sizeof(char));
+        int ch,i;
         SERVER->scream = scream;
         for (i = 0;i < SERVER->contentLength; i++){
             if ((ch = getchar()) >= 0){
@@ -92,6 +92,7 @@ static void scream(){
                 break; 
             }    
         }
+        *scream = '\0';
     }
 }
 

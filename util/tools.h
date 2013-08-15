@@ -5,6 +5,15 @@
 
 #include "dlist.h"
 
+#define _YEAR getDateByType(0)
+#define _MON getDateByType(1)
+#define _DAY getDateByType(2)
+#define _HOUR getDateByType(3)
+#define _MIN getDateByType(4)
+#define _SEC getDateByType(5) 
+#define _DATETIME getDatetime()
+#define _DATET getDate()
+
 typedef struct pstruct_{
     int length;
     int offset;
@@ -47,4 +56,26 @@ int explode(char *string,char explode,dlist *dlist);
  * @author zhouwei 2013-7-24
  */
 int countChar(const char *string,char c);
+
+/**
+ * @TODO 根据类型获取年月日十分秒
+ * @param int 需要获取的时间类型
+ * @return int
+ * @author zhouwei 2013-8-15
+ */
+int getDateByType(int type);
+
+/**
+ * @TODO 获取当前时间的yyyy-mm-dd HH:mm:ss
+ * @return 时间串，需要在外面释放内存
+ * @author zhouwei 2013-8-15
+ */
+char *getDatetime();
+
+/**
+ * @TODO 获取当前时间的yyyy-mm-dd HH:mm:ss
+ * @return 时间串，需要在外面释放内存
+ * @author zhouwei 2013-8-15
+ */
+char *getDate();
 #endif

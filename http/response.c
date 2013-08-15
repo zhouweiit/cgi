@@ -28,6 +28,9 @@ static void sendHttpHead(){
 
 static void sendHead(){
     printf("<head>\n");
+    printf("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>");
+    printf("<title>留言板</title>");
+    printf("<link type=\"text/css\" rel=\"stylesheet\" href=\"/index.css\"");
     if (head->size > 0){
         dlistelmt *headelmt = head->tail;    
         do{

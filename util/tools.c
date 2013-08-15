@@ -77,3 +77,51 @@ int countChar(const char *string,char c){
     }    
     return count;
 }
+
+int getDateByType(int type){
+    struct tm *datetime;
+    time_t nowTime;
+    time(&nowTime);
+    datetime = localtime(&nowTime);
+    int timeNum;
+    switch(type){
+        case 0 : timeNum = datetime->tm_year + 1900;
+                 break;
+        case 1 : timeNum = datetime->tm_mon + 1;
+                 break;
+        case 2 : timeNum = datetime->tm_mday;
+                 break;
+        case 3 : timeNum = datetime->tm_hour;
+                 break;
+        case 4 : timeNum = datetime->tm_min;
+                 break;
+        case 5 : timeNum = datetime->tm_sec;
+                 break;
+    }
+    return timeNum;
+}
+
+char *getDatetime(){
+    int year  = _YEAR;
+    int mon   = _MON;
+    int day   = _DAY;
+    int hour  = _HOUR;
+    int min   = _MIN;
+    int sec   = _SEC;
+    char *datetime = (char *)malloc(20*sizeof(char));
+    sprintf(datetime,"%d-%d-%d %d:%d:%d",year,mon,day,hour,min,sec);
+    return datetime;
+}
+
+char *getDate(){
+    int year  = _YEAR;
+    int mon   = _MON;
+    int day   = _DAY;
+    int hour  = _HOUR;
+    int min   = _MIN;
+    int sec   = _SEC;
+    char *date = (char *)malloc(20*sizeof(char));
+    sprintf(date,"%d-%d-%d",year,mon,day);
+    return date;
+}
+

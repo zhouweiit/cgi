@@ -58,6 +58,7 @@ static void actionInsert(char *actionKey,void (*actionFunction)()){
 static void loadAction(){
     actionInsert("/adminTestHello.c",adminTestHello);
     actionInsert("/defaultMainHtml.c",defaultMainHtml);
+    actionInsert("/defaultSubmitMessage.c",defaultSubmitMessage);
 }
 
 void initRoute(){

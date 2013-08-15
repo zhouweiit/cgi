@@ -70,4 +70,19 @@ extern void initRequest();
  * @author zhouwei 2013-7-21
  */
 extern void destroyRequest();
+
+/**
+ * @TODO 根据key获取get中value
+ * @return 值
+ * @author zhouwei 2013-7-21
+ */
+extern char *getParamsGET(char *key);
+
+/**
+ * @TODO 根据key获取post中value
+ * @return 值
+ * @author zhouwei 2013-7-21
+ */
+extern char *getParamsPOST(char *key);
+
 #endif
