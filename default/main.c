@@ -29,10 +29,15 @@ void defaultMainHtml(){
 }
 
 void defaultSubmitMessage(){ 
-    dlhashPrint(requestParamsPOST);
-    //char *message = getParamsPOST("message");    
-    //char *name = getParamsPOST("name");    
-    //char *datetime = _DATETIME;
-    //int result = insertArticle(name,message,datetime);
-    //_free(datetime);
+    char *message = getParamsPOST("message");    
+    char *name = getParamsPOST("name");    
+    char *datetime = _DATETIME;
+    int result = insertArticle(name,message,datetime);
+    _free(datetime);
+    if (0 == result){
+        appendBody("<script>alert('留言成功')</script>");
+    } else {
+        appendBody("<script>alert('留言失败')</script>");
+    }
+    appendBody("<script>location.href='/defaultMainHtml.c'</script>");
 }

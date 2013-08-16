@@ -1,4 +1,5 @@
 #include "dlist.h"
+#include "../http/request.h"
 
 void dlistInit(dlist *dlist,int (*match)(const void*,const void*),
                 void (*destroy)(void *),void (*print)(const void *)){
