@@ -2,6 +2,7 @@
 
 void defaultMainHtml(){
     appendBody("<div style='text-align:center;margin-left:auto;'><h1>留言板</h1></div>");    
+    appendBody("<div><h4 style='margin-right:-600px;'><a href='/cgi.tar.gz'>源码下载</a></h4></div>");    
     dlist *list = NULL;
     selectAllArticle(&list);
     int length = list->size;
